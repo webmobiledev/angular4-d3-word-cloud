@@ -5,8 +5,7 @@ declare let d3: any;
 
 @Component({
   selector   : 'word-cloud',
-  template: `<div class="word-cloud"></div>`,
-  styleUrls  : ['./word-cloud.component.scss']
+  template: `<div class="word-cloud"></div>`
 })
 export class WordCloudComponent implements OnInit {
 
