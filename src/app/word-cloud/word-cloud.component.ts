@@ -22,18 +22,34 @@ export class WordCloudComponent implements OnInit {
   private width: number;      // Component width
   private height: number;     // Component height
   private fillScale;          // D3 scale for text color
+  tempData = [];
 
   constructor() {
     
   }
 
   ngOnInit() {
+    let cls = this;
     this.data = this.wordData.data.split(' ').map(function(d) {
-      return {text: d, size: 10 + Math.random() * 90};
+      return {text: d, size: cls.getRandom()};
     });
     this.setup();
     this.buildSVG();
     this.populate();
+  }
+
+  private getRandom() {
+    let cls = this;
+    let size = 10 + Math.random() * 100;
+    if(size > 70 && this.tempData.length <= 10) {
+      this.tempData.push(size);
+    }
+    
+    if(this.tempData.length > 10 && size > 14) {
+      return 12;
+    }
+
+    return size;
   }
 
   private setup() {
@@ -63,11 +79,12 @@ export class WordCloudComponent implements OnInit {
   private populate() {
     let fontFace: string = (this.wordData.settings.fontFace == null) ? 'Roboto' : this.wordData.settings.fontFace;
     let fontWeight: string = (this.wordData.settings.fontWeight == null) ? 'normal' : this.wordData.settings.fontWeight;
-    let spiralType: string = (this.wordData.settings.spiral == null) ? 'rectangular' : this.wordData.settings.spiral;
+    let spiralType: string = (this.wordData.settings.spiral == null) ? 'archimedean' : this.wordData.settings.spiral;
 
     d3.layout.cloud()
       .size([this.width, this.height])
       .words(this.data)
+      .padding(5)
       .rotate(() => (~~(Math.random() * 2) * 90))
       .font(fontFace)
       .fontWeight(fontWeight)
