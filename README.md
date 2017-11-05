@@ -3,6 +3,9 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 This project is d3 word cloud graph built with Angular 4 component.
 
+## Demo url
+[Ng4-D3-Word-Cloud](https://ng4d3wordcloud.herokuapp.com/)
+
 ## Result
 ![](git-image/1.png)
 
