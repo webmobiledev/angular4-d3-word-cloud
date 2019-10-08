@@ -16,7 +16,7 @@ webpackEmptyContext.id = "../../../../../src async recursive";
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<word-cloud [wordData]=\"data\"></word-cloud>"
+module.exports = "<app-word-cloud [wordData]=\"data\"></app-word-cloud>"
 
 /***/ }),
 
@@ -124,7 +124,8 @@ AppModule = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Data; });
 var Data = {
-    data: "CSS is used to control style of web document in simple and easy way CSS is acronym for Cascading Style Sheet This tutorial covers both versions CSS1 CSS2 and CSS3 and gives complete understanding of CSS starting from its basics to advanced concepts AudienceThis tutorial will help both students as well as professionals who want to make their websites or personal blogs more attractive Prerequisites You should be familiar with Basic word processing using any text editor How to create directories and files How to navigate through different directories Internet browsing using popular browsers like Internet Explorer or Firefox Developing simple Web Pages using HTML or XHTML If you are new to HTML and XHTML then we would suggest you to go through our HTML Tutorial or XHTML Tutorial first",
+    // tslint:disable-next-line:max-line-length
+    data: 'CSS is used to control style of web document in simple and easy way CSS is acronym for Cascading Style Sheet This tutorial covers both versions CSS1 CSS2 and CSS3 and gives complete understanding of CSS starting from its basics to advanced concepts AudienceThis tutorial will help both students as well as professionals who want to make their websites or personal blogs more attractive Prerequisites You should be familiar with Basic word processing using any text editor How to create directories and files How to navigate through different directories Internet browsing using popular browsers like Internet Explorer or Firefox Developing simple Web Pages using HTML or XHTML If you are new to HTML and XHTML then we would suggest you to go through our HTML Tutorial or XHTML Tutorial first',
     settings: {
         minFontSize: 10,
         maxFontSize: 300,
@@ -179,24 +180,22 @@ var WordCloudComponent = (function () {
     };
     WordCloudComponent.prototype.setup = function () {
         this.margin = {
-            top: 10,
-            right: 10,
-            bottom: 10,
-            left: 10
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20
         };
         this.width = window.innerWidth - this.margin.left - this.margin.right;
-        this.height = this.width * 0.75 - this.margin.top - this.margin.bottom;
-        var minFontSize = (this.wordData.settings.minFontSize == null) ? 18 : this.wordData.settings.minFontSize;
-        var maxFontSize = (this.wordData.settings.maxFontSize == null) ? 96 : this.wordData.settings.maxFontSize;
+        this.height = window.innerHeight - this.margin.top - this.margin.bottom;
         this.fillScale = __WEBPACK_IMPORTED_MODULE_1_d3__["a" /* scaleOrdinal */](__WEBPACK_IMPORTED_MODULE_1_d3__["b" /* schemeCategory20 */]);
     };
     WordCloudComponent.prototype.buildSVG = function () {
-        this.svg = __WEBPACK_IMPORTED_MODULE_1_d3__["c" /* select */]("div.word-cloud")
+        this.svg = __WEBPACK_IMPORTED_MODULE_1_d3__["c" /* select */]('div.word-cloud')
             .append('svg')
             .attr('width', this.width + this.margin.left + this.margin.right)
             .attr('height', this.height + this.margin.top + this.margin.bottom)
             .append('g')
-            .attr('transform', 'translate(' + ~~(this.width / 2) + ',' + ~~(this.height / 2) + ')');
+            .attr('transform', 'translate(' + (this.width / 2) + ',' + (this.height / 2) + ')');
     };
     WordCloudComponent.prototype.populate = function () {
         var _this = this;
@@ -207,7 +206,11 @@ var WordCloudComponent = (function () {
             .size([this.width, this.height])
             .words(this.data)
             .padding(5)
-            .rotate(function () { return (~~(Math.random() * 2) * 90); })
+            .rotate(function () {
+            return ((Math.random() * 2) * 90);
+            // vertical & horizontal only
+            // return (~~(Math.random() * 2) * 90);
+        })
             .font(fontFace)
             .fontWeight(fontWeight)
             .fontSize(function (d) { return (d.size); })
@@ -243,8 +246,8 @@ __decorate([
 ], WordCloudComponent.prototype, "wordData", void 0);
 WordCloudComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
-        selector: 'word-cloud',
-        template: "<div class=\"word-cloud\"></div>"
+        selector: 'app-word-cloud',
+        template: "<div class='word-cloud'></div>"
     }),
     __metadata("design:paramtypes", [])
 ], WordCloudComponent);

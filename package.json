@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,12 +21,9 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
     "d3": "^4.11.0",
-    "express": "^4.16.2",
-    "http": "0.0.0",
-    "path": "^0.12.7",
+    "node-sass": "^4.12.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

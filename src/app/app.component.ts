@@ -9,7 +9,6 @@ import { Data } from './share/data';
 })
 export class AppComponent {
   data = Data;
-  
   constructor() {
     console.log(this.data);
   }
